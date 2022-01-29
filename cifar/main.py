@@ -18,7 +18,7 @@ import torchvision.transforms as transforms
 from torchvision.datasets import CIFAR10, CIFAR100
 import torch.nn.functional as F
 
-parser = argparse.ArgumentParser(description='Barlow Twins Training')
+parser = argparse.ArgumentParser(description='Zero-CL Training')
 parser.add_argument('--data', type=Path, metavar='DIR', required=True,
                     help='path to dataset')
 parser.add_argument('--workers', default=4, type=int, metavar='N',
@@ -63,7 +63,7 @@ def main_worker(gpu, args):
 
     torch.backends.cudnn.benchmark = True
 
-    model = BarlowTwins(args).cuda(gpu)
+    model = ZeroCL(args).cuda(gpu)
     # model = nn.SyncBatchNorm.convert_sync_batchnorm(model)
     param_weights = []
     param_biases = []
@@ -156,7 +156,7 @@ def off_diagonal(x):
     return x.flatten()[:-1].view(n - 1, n + 1)[:, 1:].flatten()
 
 
-class BarlowTwins(nn.Module):
+class ZeroCL(nn.Module):
     def __init__(self, args):
         super().__init__()
         self.args = args
