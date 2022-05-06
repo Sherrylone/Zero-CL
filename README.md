@@ -1,4 +1,4 @@
-# ZeroCL: instance and feature correlation for negative-free symmetric contrastive learning
+# ZeroCL: instance and feature correlation for negative-free symmetric contrastive learning (ICLR 2022)
 
 Code of ICLR 22 paper "[ZeroCL: instance and feature correlation for negative-free symmetric contrastive learning](https://openreview.net/forum?id=RAW9tCdVxLj)"
 
